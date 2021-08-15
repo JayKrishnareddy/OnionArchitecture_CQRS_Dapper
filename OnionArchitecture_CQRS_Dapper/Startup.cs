@@ -1,3 +1,4 @@
+using ApplicationLayer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -28,6 +29,9 @@ namespace OnionArchitecture_CQRS_Dapper
         {
 
             services.AddControllers();
+            #region Dependency Injection
+            services.AddApplication();
+            #endregion
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "OnionArchitecture_CQRS_Dapper", Version = "v1" });
