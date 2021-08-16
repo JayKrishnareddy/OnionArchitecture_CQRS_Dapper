@@ -8,24 +8,24 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace ApplicationLayer.Queries
+namespace ApplicationLayer.Queries.Products
 {
-    public class GetAllOrdersQuery : IRequest<IList<Order>>
+    public class GetAllProductsQuery : IRequest<IList<Product>>
     {
-        public class GetAllOrderQueryHandler : IRequestHandler<GetAllOrdersQuery, IList<Order>>
+        public class GetAllOrderQueryHandler : IRequestHandler<GetAllProductsQuery, IList<Product>>
         {
             private readonly IConfiguration _configuration;
             public GetAllOrderQueryHandler(IConfiguration configuration)
             {
                 _configuration = configuration;
             }
-            public async Task<IList<Order>> Handle(GetAllOrdersQuery query, CancellationToken cancellationToken)
+            public async Task<IList<Product>> Handle(GetAllProductsQuery query, CancellationToken cancellationToken)
             {
-                var sql = "Select * from Orders";
+                var sql = "Select * from Products";
                 using (var connection = new SqlConnection(_configuration.GetConnectionString("DefaultConnection")))
                 {
                     connection.Open();
-                    var result = await connection.QueryAsync<Order>(sql);
+                    var result = await connection.QueryAsync<Product>(sql);
                     return result.ToList();
                 }
             }

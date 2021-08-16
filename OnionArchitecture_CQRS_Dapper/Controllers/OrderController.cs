@@ -1,5 +1,5 @@
 ﻿using ApplicationLayer.Commands.Orders;
-using ApplicationLayer.Queries;
+using ApplicationLayer.Queries.Orders;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 
