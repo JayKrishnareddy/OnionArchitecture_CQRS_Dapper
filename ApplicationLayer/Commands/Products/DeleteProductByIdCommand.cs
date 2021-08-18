@@ -8,25 +8,25 @@ using System.Threading.Tasks;
 
 namespace ApplicationLayer.Commands.Products
 {
-    public class DeleteProductByIdCommand : IRequest<int>
+    public class DeleteProductByIdCommand : IRequest<string>
     {
         [Required]
         public int ProductId { get; set; }
-        public class DeleteProductByIdCommandHandler : IRequestHandler<DeleteProductByIdCommand, int>
+        public class DeleteProductByIdCommandHandler : IRequestHandler<DeleteProductByIdCommand, string>
         {
             private readonly IConfiguration _configuration;
             public DeleteProductByIdCommandHandler(IConfiguration configuration)
             {
                 _configuration = configuration;
             }
-            public async Task<int> Handle(DeleteProductByIdCommand command, CancellationToken cancellationToken)
+            public async Task<string> Handle(DeleteProductByIdCommand command, CancellationToken cancellationToken)
             {
                 var sql = "DELETE FROM Products WHERE ProductId = @ProductId";
                 using (var connection = new SqlConnection(_configuration.GetConnectionString("DefaultConnection")))
                 {
                     connection.Open();
-                    var result = await connection.ExecuteAsync(sql, new { ClientID = command.ProductId });
-                    return result;
+                    var result = await connection.ExecuteAsync(sql, new { ProductId = command.ProductId });
+                    return "Product Deletion Successful";
                 }
             }
         }
