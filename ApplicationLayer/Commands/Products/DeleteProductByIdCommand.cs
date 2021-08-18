@@ -1,18 +1,14 @@
 ﻿using Dapper;
 using MediatR;
 using Microsoft.Extensions.Configuration;
-using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
 namespace ApplicationLayer.Commands.Products
 {
-   public class DeleteProductByIdCommand : IRequest<int>
+    public class DeleteProductByIdCommand : IRequest<int>
     {
         [Required]
         public int ProductId { get; set; }

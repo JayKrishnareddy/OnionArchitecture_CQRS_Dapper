@@ -1,7 +1,6 @@
 ﻿using Dapper;
 using MediatR;
 using Microsoft.Extensions.Configuration;
-using System;
 using System.ComponentModel.DataAnnotations;
 using System.Data.SqlClient;
 using System.Threading;
