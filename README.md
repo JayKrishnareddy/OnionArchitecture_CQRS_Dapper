@@ -1,6 +1,6 @@
 ## Implement Read/Write Operations Using CQRS And Dapper In ASP.NET Core - Detailed
 
-
+![Alt Text](https://github.com/JayKrishnareddy/OnionArchitecture_CQRS_Dapper/blob/master/CQRS-Pattern.png)
 
 ### Table of Contents
 
